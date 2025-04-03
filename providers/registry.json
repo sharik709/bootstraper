@@ -1,0 +1,127 @@
+{
+  "providers": [
+    {
+      "name": "next",
+      "description": "Next.js - React framework with server-side rendering",
+      "command": "npx",
+      "args": ["create-next-app@{version}", "{project-name}"],
+      "dependencies": ["npx"],
+      "options": {
+        "typescript": "Use TypeScript (true/false)",
+        "tailwind": "Use Tailwind CSS (true/false)",
+        "eslint": "Use ESLint for code quality (true/false)",
+        "src-dir": "Use src/ directory (true/false)",
+        "app": "Use App Router (true/false)",
+        "version": "Specify Next.js version"
+      }
+    },
+    {
+      "name": "vue",
+      "description": "Vue.js - Progressive JavaScript framework",
+      "command": "npm",
+      "args": ["create", "vue@{version}", "{project-name}"],
+      "dependencies": ["npm"],
+      "options": {
+        "typescript": "Use TypeScript (true/false)",
+        "router": "Add Vue Router for single page applications (true/false)",
+        "pinia": "Add Pinia for state management (true/false)",
+        "vitest": "Add Vitest for unit testing (true/false)",
+        "eslint": "Add ESLint for code quality (true/false)",
+        "non-interactive": "Use non-interactive mode with flag options (true/false)",
+        "version": "Specify Vue.js version"
+      }
+    },
+    {
+      "name": "laravel",
+      "description": "Laravel - PHP web application framework",
+      "command": "composer",
+      "args": ["create-project", "laravel/laravel:{version}", "{project-name}"],
+      "dependencies": ["composer", "php"],
+      "options": {
+        "git": "Initialize a Git repository (true/false)",
+        "database": "Configure database (mysql, pgsql, sqlite, sqlsrv)",
+        "auth": "Set up authentication scaffolding (true/false)",
+        "version": "Specify Laravel version"
+      }
+    },
+    {
+      "name": "remix",
+      "description": "Remix - React framework with server rendering",
+      "command": "npx",
+      "args": ["create-remix@{version}", "{project-name}"],
+      "dependencies": ["npx"],
+      "options": {
+        "typescript": "Use TypeScript (true/false)",
+        "version": "Specify Remix version"
+      }
+    },
+    {
+      "name": "angular",
+      "description": "Angular - Platform for building web applications",
+      "command": "npx",
+      "args": ["@angular/cli@{version}", "new", "{project-name}"],
+      "dependencies": ["npx"],
+      "options": {
+        "routing": "Generate a routing module (true/false)",
+        "style": "The style syntax to use (css, scss, sass, less)",
+        "version": "Specify Angular CLI version"
+      }
+    },
+    {
+      "name": "express",
+      "description": "Express - Fast, unopinionated web framework for Node.js",
+      "command": "npx",
+      "args": ["express-generator@{version}", "{project-name}"],
+      "dependencies": ["npx"],
+      "options": {
+        "view": "View engine to use (pug, ejs, hbs)",
+        "css": "CSS processor to use (less, stylus, compass, sass)",
+        "version": "Specify Express Generator version"
+      }
+    },
+    {
+      "name": "django",
+      "description": "Django - High-level Python web framework",
+      "command": "django-admin",
+      "args": ["startproject", "{project-name}"],
+      "dependencies": ["django-admin", "python"],
+      "options": {}
+    },
+    {
+      "name": "svelte",
+      "description": "Svelte - Component framework with no runtime",
+      "command": "npm",
+      "args": ["create", "svelte@{version}", "{project-name}"],
+      "dependencies": ["npm"],
+      "options": {
+        "typescript": "Use TypeScript (true/false)",
+        "version": "Specify Svelte version"
+      }
+    },
+    {
+      "name": "flutter",
+      "description": "Flutter - Google's UI toolkit for building apps",
+      "command": "flutter",
+      "args": ["create", "{project-name}"],
+      "dependencies": ["flutter"],
+      "options": {
+        "org": "Organization name (reverse-domain notation)",
+        "description": "Project description",
+        "platforms": "Target platforms (android,ios,web,macos,windows,linux)"
+      }
+    },
+    {
+      "name": "go",
+      "description": "Go - Statically typed, compiled programming language",
+      "command": "go",
+      "args": ["mod", "init", "{module}"],
+      "dependencies": ["go"],
+      "options": {
+        "module": "Module path (e.g., github.com/username/myproject)",
+        "template": "Project template (cmd, pkg, lib)",
+        "version": "Go version to use"
+      }
+    }
+  ],
+  "updated_at": "2023-06-01"
+}

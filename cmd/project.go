@@ -7,27 +7,39 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var newCmd = &cobra.Command{
-	Use:   "new [framework] [project-name]",
+var projectCmd = &cobra.Command{
+	Use:   "project [project-name] --[framework]",
 	Short: "Create a new project with the specified framework",
 	Long: `Create a new project using the specified framework.
 For example:
-  bt new next my-app
-  bt new vue my-app
-  bt new laravel my-app
-  bt new go my-app --module=github.com/username/my-app`,
-	Args: cobra.ExactArgs(2),
+  bt project my-app --next
+  bt project my-app --vue
+  bt project my-app --laravel`,
+	Args: cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		framework := args[0]
-		projectName := args[1]
+		projectName := args[0]
+
+		// Determine which framework flag was used
+		var framework string
+		for _, provider := range providers.List() {
+			flagValue, err := cmd.Flags().GetBool(provider.Name())
+			if err == nil && flagValue {
+				framework = provider.Name()
+				break
+			}
+		}
+
+		if framework == "" {
+			return fmt.Errorf("no framework specified, use --[framework] flag")
+		}
 
 		// Get the provider
 		provider, err := providers.Get(framework)
 		if err != nil {
-			return fmt.Errorf("framework not supported: %s\nRun 'bt list' to see available frameworks", framework)
+			return err
 		}
 
-		// Collect options from flags
+		// Collect options from flags (exclude framework flags)
 		options := make(map[string]string)
 
 		// Process flag values for the chosen framework
@@ -47,14 +59,19 @@ func init() {
 	// Create a map to track which flags have been added to avoid duplicates
 	addedFlags := make(map[string]bool)
 
-	// Add available options for each provider as flags
+	// Add framework flags
 	for _, provider := range providers.List() {
+		projectCmd.Flags().Bool(provider.Name(), false, fmt.Sprintf("Create a %s project", provider.Name()))
+
+		// Add framework-specific options to the project command
 		for option, description := range provider.AvailableOptions() {
 			// Skip if flag already exists
 			if _, exists := addedFlags[option]; !exists {
-				newCmd.Flags().String(option, "", description)
+				projectCmd.Flags().String(option, "", description)
 				addedFlags[option] = true
 			}
 		}
 	}
+
+	rootCmd.AddCommand(projectCmd)
 }

@@ -18,6 +18,14 @@ type Provider interface {
 
 	// AvailableOptions returns a map of available options for the provider
 	AvailableOptions() map[string]string
+
+	// CheckDependencies verifies that all required dependencies are installed
+	// Returns nil if all dependencies are met, or error with instructions
+	CheckDependencies() error
+
+	// SupportedVersions returns a list of supported framework versions
+	// If empty, uses the latest version by default
+	SupportedVersions() []string
 }
 
 // Registry keeps track of all registered providers

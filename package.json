@@ -1,0 +1,49 @@
+{
+  "name": "bootstraper-cli",
+  "version": "0.2.0",
+  "description": "A unified CLI tool to bootstrap projects with multiple frameworks",
+  "bin": {
+    "bt": "./bin/wrapper.js"
+  },
+  "scripts": {
+    "postinstall": "node scripts/install.js",
+    "prepublishOnly": "npm run build",
+    "build": "go build -o dist/bt",
+    "test": "go test ./..."
+  },
+  "files": [
+    "bin",
+    "dist",
+    "scripts",
+    "providers/registry.json"
+  ],
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharik709/bootstraper.git"
+  },
+  "keywords": [
+    "cli",
+    "bootstrap",
+    "scaffold",
+    "generator",
+    "project",
+    "framework",
+    "nextjs",
+    "vue",
+    "react",
+    "laravel",
+    "go",
+    "python",
+    "django",
+    "express"
+  ],
+  "author": "Sharik Shaikh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sharik709/bootstraper/issues"
+  },
+  "homepage": "https://github.com/sharik709/bootstraper#readme"
+}

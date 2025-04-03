@@ -1,0 +1,36 @@
+# Go source files
+*.go
+go.mod
+go.sum
+
+# Tests
+*_test.go
+/test/
+
+# Git files
+.git
+.gitignore
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build artifacts (except dist/bt)
+/tmp/
+/build/
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Development files
+Makefile
+.golangci.yml
+.github/
+
+# Exclude everything in dist except the bt binary
+/dist/*
+!/dist/bt
